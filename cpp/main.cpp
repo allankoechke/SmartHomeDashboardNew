@@ -1,9 +1,12 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QFont>
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
+
+    app.setFont(QFont(":/SmartDashboard/assets/fonts/CodecPro-Regular.ttf"));
 
     QQmlApplicationEngine engine;
     const QUrl url(u"qrc:/SmartDashboard/qml/Main.qml"_qs);

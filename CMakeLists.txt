@@ -16,6 +16,7 @@ qt_add_qml_module(appSmartDashboard
     URI SmartDashboard
     VERSION 1.0
     QML_FILES qml/Main.qml
+    RESOURCES assets/fonts/CodecPro-Italic.ttf assets/fonts/CodecPro-Regular.ttf
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
