@@ -15,25 +15,25 @@ Item {
         MiddlePaneWidget {
             label: qsTr('Temperature')
             units: qsTr('°C')
-            value: 26
+            value: temperature
         }
 
         MiddlePaneWidget {
             label: qsTr('Humidity')
             units: qsTr('%')
-            value: 47
+            value: humidity
         }
 
         MiddlePaneWidget {
             label: qsTr('Heating')
             units: qsTr('°C')
-            value: 35
+            value: heating
         }
 
         MiddlePaneWidget {
             label: qsTr('Water')
             units: qsTr('kpa')
-            value: 231
+            value: water
             alignUnitsRight: false
         }
     }

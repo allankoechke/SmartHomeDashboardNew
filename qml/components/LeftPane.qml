@@ -6,28 +6,6 @@ Item {
     height: parent.height
     anchors.left: parent.left
 
-    property ListModel roomsModel: ListModel {
-        ListElement {
-            label: 'Living'
-            icon: '\uf4b8'
-        }
-
-        ListElement {
-            label: 'Kitchen'
-            icon: '\ue01b'
-        }
-
-        ListElement {
-            label: 'Bedroom'
-            icon: '\uf236'
-        }
-
-        ListElement {
-            label: 'Laundry'
-            icon: '\uf898'
-        }
-    }
-
     Item {
         id: dateitem
         height: 150
@@ -35,7 +13,7 @@ Item {
         anchors.top: parent.top
 
         Text {
-            text: qsTr('2023-12-30')
+            text: Qt.formatDate(currentTime, 'yyyy-MM-dd')
             font.pixelSize: 16
             color: textColor
             anchors.top: parent.top
@@ -45,18 +23,17 @@ Item {
         }
 
         Text {
-            text: qsTr('SAT')
+            text: Qt.formatDate(currentTime, 'ddd')
             font.pixelSize: 16
             color: textColor
             anchors.top: parent.top
-            anchors.right: ampmtxt.right // parent.right
-            // anchors.rightMargin: 24
+            anchors.right: ampmtxt.right
             anchors.topMargin: 24
         }
 
         Text {
             id: timetxt
-            text: qsTr('10:30')
+            text: Qt.formatTime(currentTime, 'hh:mm')
             font.pixelSize: 64
             color: textColor
             anchors.bottom: parent.bottom
@@ -66,12 +43,22 @@ Item {
         }
 
         Text {
-            id: ampmtxt
-            text: qsTr('AM')
-            font.pixelSize: 16
+            id: sectxt
+            width: 50
+            text: ':' + Qt.formatTime(currentTime, 'ss')
+            font.pixelSize: 24
             color: textColor
             anchors.baseline: timetxt.baseline
             anchors.left: timetxt.right
+        }
+
+        Text {
+            id: ampmtxt
+            text: Qt.formatTime(currentTime, 'AP')
+            font.pixelSize: 16
+            color: textColor
+            anchors.baseline: timetxt.baseline
+            anchors.left: sectxt.right
             anchors.leftMargin: 8
         }
     }
@@ -104,17 +91,17 @@ Item {
                 height: tmptxt.height
                 anchors.horizontalCenter: parent.horizontalCenter
 
-                Text {
+                IconLabel {
                     id: cloudicon
-                    text: qsTr('CLOUD')
-                    font.pixelSize: 14
+                    icon: '\uf746'
+                    size: 24
                     color: textColor
                     anchors.baseline: tmptxt.baseline
                 }
 
                 Text {
                     id: tmptxt
-                    text: qsTr('22')
+                    text: ambientTemperature
                     font.pixelSize: 82
                     color: textColor
 
@@ -171,11 +158,13 @@ Item {
                     property string label
                     property bool isActive: label===activeRoomLabel
                     property alias icon: iconlabel.icon
+                    property alias size: iconlabel.size
 
                     signal clicked()
 
-                    label: locationrepeater.model.label
-                    icon: locationrepeater.model.icon
+                    label: model.label
+                    icon: model.icon
+                    size: model.size
                     onClicked: activeRoomLabel=label
 
                     Column {

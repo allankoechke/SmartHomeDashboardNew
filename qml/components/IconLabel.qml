@@ -4,7 +4,7 @@ import QtQuick.Controls
 Label {
     id: lbl
 
-    property real size: 16
+    property real size: 28
     property string icon
 
     text: icon

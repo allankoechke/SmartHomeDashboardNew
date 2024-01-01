@@ -141,7 +141,7 @@ Item {
                     Progressbar {
                         id: pb
                         width: parent.width
-                        value: 55/100
+                        value: lightIntensity/100
                     }
 
                     Text {
