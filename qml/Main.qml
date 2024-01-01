@@ -88,8 +88,6 @@ Window {
             var obji = roomsModel.get(i)
 
             if(obji['label'] === activeRoomLabel) {
-                console.log('Found!')
-
                 internal.temperature = obji['temperature']
                 internal.humidity = obji['humidity']
                 internal.heating = obji['heating']

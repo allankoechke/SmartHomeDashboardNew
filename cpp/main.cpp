@@ -2,16 +2,17 @@
 #include <QQmlApplicationEngine>
 #include <QFontDatabase>
 #include <QFont>
-// #include
+#include <QQuickStyle>
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
-    int id = QFontDatabase::addApplicationFont(":/SmartDashboard/assets/fonts/CodecPro-Regular.ttf");
+    QQuickStyle::setStyle("Basic");
+
+    QFontDatabase::addApplicationFont(":/SmartDashboard/assets/fonts/CodecPro-Regular.ttf");
 
     QFont font("Codec Pro");
-    // font.setStyleHint(QFont::Normal);
     QGuiApplication::setFont(font);
 
     QQmlApplicationEngine engine;

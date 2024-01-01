@@ -4,7 +4,7 @@ project(SmartDashboard VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 6.4 REQUIRED COMPONENTS Quick)
+find_package(Qt6 6.4 REQUIRED COMPONENTS Quick QuickControls2)
 
 qt_standard_project_setup()
 
@@ -15,18 +15,21 @@ qt_add_executable(appSmartDashboard
 qt_add_qml_module(appSmartDashboard
     URI SmartDashboard
     VERSION 1.0
-    QML_FILES qml/Main.qml
-    RESOURCES assets/fonts/CodecPro-Italic.ttf assets/fonts/CodecPro-Regular.ttf
-    RESOURCES assets/fonts/fontawesome.otf
-    QML_FILES qml/components/IconLabel.qml
-    QML_FILES qml/components/LeftPane.qml
-    QML_FILES qml/components/MiddlePane.qml
-    QML_FILES qml/components/RightPane.qml
-    QML_FILES qml/components/MiddlePaneWidget.qml
-    QML_FILES qml/components/Switch.qml
-    QML_FILES qml/components/Progressbar.qml
-    QML_FILES qml/components/RightPaneLightSwitchComponent.qml
-    QML_FILES qml/components/CircularProgressBar.qml
+    RESOURCES
+        assets/fonts/CodecPro-Italic.ttf
+        assets/fonts/CodecPro-Regular.ttf
+        assets/fonts/fontawesome.otf
+    QML_FILES
+        qml/Main.qml
+        qml/components/IconLabel.qml
+        qml/components/LeftPane.qml
+        qml/components/MiddlePane.qml
+        qml/components/RightPane.qml
+        qml/components/MiddlePaneWidget.qml
+        qml/components/Switch.qml
+        qml/components/Progressbar.qml
+        qml/components/RightPaneLightSwitchComponent.qml
+        qml/components/CircularProgressBar.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
@@ -41,7 +44,7 @@ set_target_properties(appSmartDashboard PROPERTIES
 )
 
 target_link_libraries(appSmartDashboard
-    PRIVATE Qt6::Quick
+    PRIVATE Qt6::Quick Qt6::QuickControls2
 )
 
 include(GNUInstallDirs)
