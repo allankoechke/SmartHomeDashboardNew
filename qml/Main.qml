@@ -160,4 +160,8 @@ Window {
         id: fontawesomefontloader
         source: "qrc:/SmartDashboard/assets/fonts/fontawesome.otf"
     }
+
+    function commafy(value) {
+        return value.toLocaleString()
+    }
 }

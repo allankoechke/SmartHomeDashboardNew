@@ -41,7 +41,7 @@ Item {
                         anchors.margins: 16
 
                         Text {
-                            text: qsTr('7,354')
+                            text: commafy(powerConsumed)
                             font.pixelSize: 50
                             color: textColor
                             anchors.centerIn: parent

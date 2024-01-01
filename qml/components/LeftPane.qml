@@ -178,6 +178,9 @@ Item {
                             anchors.horizontalCenter: parent.horizontalCenter
                             horizontalAlignment: IconLabel.AlignHCenter
                             verticalAlignment: IconLabel.AlignVCenter
+                            opacity: roomdelegateitem.isActive ? 1 : 0.5
+
+                            Behavior on opacity { NumberAnimation { duration: 300 }}
                         }
 
                         Text {
@@ -185,6 +188,9 @@ Item {
                             font.pixelSize: 12
                             color: textColor
                             anchors.horizontalCenter: parent.horizontalCenter
+                            opacity: roomdelegateitem.isActive ? 1 : 0.5
+
+                            Behavior on opacity { NumberAnimation { duration: 300 }}
 
                             Rectangle {
                                 width: parent.parent.width * 0.8
