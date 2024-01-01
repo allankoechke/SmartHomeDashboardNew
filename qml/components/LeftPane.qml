@@ -6,6 +6,28 @@ Item {
     height: parent.height
     anchors.left: parent.left
 
+    property ListModel roomsModel: ListModel {
+        ListElement {
+            label: 'Living'
+            icon: '\uf4b8'
+        }
+
+        ListElement {
+            label: 'Kitchen'
+            icon: '\ue01b'
+        }
+
+        ListElement {
+            label: 'Bedroom'
+            icon: '\uf236'
+        }
+
+        ListElement {
+            label: 'Laundry'
+            icon: '\uf898'
+        }
+    }
+
     Item {
         id: dateitem
         height: 150
@@ -137,33 +159,36 @@ Item {
             anchors.fill: parent
             anchors.margins: 24
 
-            Component.onCompleted: console.log('-- ', locationitempadded.width)
-
             Repeater {
                 id: locationrepeater
-                model: ['Living', 'Kitchen', 'Bedroom', 'Laundry']
+                model: roomsModel
 
                 delegate: Item {
                     id: roomdelegateitem
                     height: locationitempadded.height
-                    width: locationitempadded.width / locationrepeater.model.length
+                    width: locationitempadded.width / locationrepeater.model.count
 
                     property string label
                     property bool isActive: label===activeRoomLabel
+                    property alias icon: iconlabel.icon
 
                     signal clicked()
 
-                    label: modelData
+                    label: locationrepeater.model.label
+                    icon: locationrepeater.model.icon
                     onClicked: activeRoomLabel=label
 
                     Column {
                         anchors.fill: parent
                         spacing: 8
 
-                        Rectangle {
+                        IconLabel {
+                            id: iconlabel
                             width: parent.height * 0.5
                             height: width
                             anchors.horizontalCenter: parent.horizontalCenter
+                            horizontalAlignment: IconLabel.AlignHCenter
+                            verticalAlignment: IconLabel.AlignVCenter
                         }
 
                         Text {
