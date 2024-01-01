@@ -17,6 +17,12 @@ qt_add_qml_module(appSmartDashboard
     VERSION 1.0
     QML_FILES qml/Main.qml
     RESOURCES assets/fonts/CodecPro-Italic.ttf assets/fonts/CodecPro-Regular.ttf
+    RESOURCES assets/fonts/fontawesome.otf
+    QML_FILES qml/components/IconLabel.qml
+    QML_FILES qml/components/LeftPane.qml
+    QML_FILES qml/components/MiddlePane.qml
+    QML_FILES qml/components/RightPane.qml
+    QML_FILES qml/components/MiddlePaneWidget.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
